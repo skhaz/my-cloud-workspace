@@ -7,7 +7,7 @@ terraform {
 }
 
 provider "vultr" {
-  api_key = var.VULTR_API_KEY
+  api_key = var.VULTR_APIKEY
 }
 
-variable "VULTR_API_KEY" {}
+variable "VULTR_APIKEY" {}
