@@ -1,0 +1,36 @@
+#cloud-config
+
+---
+users:
+  - name: ${user}
+    shell: /usr/bin/bash
+    ssh_import_id: gh:${user}
+    sudo: ALL=(ALL:ALL) NOPASSWD:ALL
+    groups: docker
+    lock_passwd: true
+
+chpasswd:
+  expire: false
+
+ssh_pwauth: false
+
+apt_upgrade: true
+
+apt:
+  sources:
+    tailscale.list:
+      source: deb https://pkgs.tailscale.com/stable/ubuntu focal main
+      keyid: 2596A99EAAB33821893C0A79458CA832957F5868
+    docker.list:
+      source: deb https://download.docker.com/linux/ubuntu focal stable
+      keyid: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+
+packages: 
+  - docker-ce
+  - docker-ce-cli
+  - docker-compose-plugin
+  - tailscale
+  # - zsh
+
+runcmd:
+  - tailscale up -authkey ${tskey}
