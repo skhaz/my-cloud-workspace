@@ -6,10 +6,10 @@ locals {
 }
 
 resource "vultr_instance" "workstation" {
-    #plan = "vc2-4c-8gb-sc1"
-    plan = "vhp-8c-16gb-intel"
-    #region = "sao"
-    region = "sjc"
+    plan = "vc2-1c-1gb-sc1"
+    # plan = "vhp-8c-16gb-intel"
+    region = "sao"
+    # region = "sjc"
     os_id = "387"
     enable_ipv6 = true
 
