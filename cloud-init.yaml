@@ -36,5 +36,10 @@ packages:
   - tailscale
 
 runcmd:
-  - tailscale up -authkey ${tskey}
+  - |
+    cat << 'EOF' >> /home/${user}/.bashrc
+    . $HOME/.asdf/asdf.sh
+    . $HOME/.asdf/completions/asdf.bash
+    EOF
   - su ${user} -c 'git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2'
+  - tailscale up -authkey ${tskey}
