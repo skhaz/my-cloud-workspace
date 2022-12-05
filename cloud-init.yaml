@@ -14,6 +14,8 @@ chpasswd:
 
 ssh_pwauth: false
 
+apt_update: true
+
 apt_upgrade: true
 
 apt:
@@ -26,11 +28,13 @@ apt:
       keyid: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
 
 packages: 
+  - curl
+  - git
   - docker-ce
   - docker-ce-cli
   - docker-compose-plugin
   - tailscale
-  # - zsh
 
 runcmd:
   - tailscale up -authkey ${tskey}
+  - su ${user} -c 'git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2'
