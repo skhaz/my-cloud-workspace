@@ -6,7 +6,7 @@ locals {
 }
 
 resource "vultr_instance" "workstation" {
-  plan = "vc2-1c-1gb-sc1"
+  plan = "vc2-2c-4gb-sc1"
   # plan = "vhp-8c-16gb-intel"
   region = "sao"
   # region = "sjc"

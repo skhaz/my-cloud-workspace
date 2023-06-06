@@ -1,6 +1,9 @@
 #cloud-config
-
 ---
+mounts:
+  - [tmpfs, /tmp, tmpfs, "defaults,noatime,size=10%"]
+  - [tmpfs, /var/lib/docker, tmpfs, "defaults,noatime,size=60%"]
+
 users:
   - name: ${user}
     shell: /usr/bin/bash
@@ -27,7 +30,7 @@ apt:
       source: deb https://download.docker.com/linux/ubuntu focal stable
       keyid: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
 
-packages: 
+packages:
   - curl
   - git
   - docker-ce
