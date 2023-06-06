@@ -1,8 +1,8 @@
 #cloud-config
 ---
 mounts:
-  - [tmpfs, /tmp, tmpfs, "defaults,noatime,size=10%"]
-  - [tmpfs, /var/lib/docker, tmpfs, "defaults,noatime,size=60%"]
+  # - [tmpfs, /tmp, tmpfs, "defaults,noatime,size=10%"]
+  - [tmpfs, /var/lib/docker, tmpfs, "defaults,noatime,size=80%"]
 
 users:
   - name: ${user}
